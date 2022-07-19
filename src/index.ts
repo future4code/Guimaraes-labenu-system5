@@ -16,7 +16,6 @@ import { EspecialidadeDatabase } from "./data/EspecialidadeDatabase"
 
 // DOCENTE
 app.get('/especialidades', async (req: Request, res: Response) => {
-
     try {
 
         const especialidadeDB = new EspecialidadeDatabase()
@@ -29,8 +28,26 @@ app.get('/especialidades', async (req: Request, res: Response) => {
     catch (error: any) {
 
         res.status(400).send(error.sqlMessage || error.message)
+        
+    }
+})
+
+app.post('/especialidades', async (req: Request, res: Response) => {
+    try {
+        
+        const { nome } = req.body
+
+        const especialidadeDB = new EspecialidadeDatabase()
+        await especialidadeDB.post(nome)
+
+        res.status(201).send('Especialidade criada com sucesso')
 
     }
 
+    catch (error: any) {
+
+        res.status(401).send(error.sqlMessage || error.message)
+
+    }
 })
 // DOCENTE

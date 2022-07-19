@@ -24,4 +24,26 @@ export class EspecialidadeDatabase extends BaseDatabase {
         }
     }
 
+    public post = async (nome: string) => {
+
+        try {
+
+            console.log(nome)
+
+            await this.connection('LabenuSystem_Especialidade')
+            .insert({
+                id: generateId(),
+                nome
+            })
+
+        }
+
+        catch (error: any) {
+
+            throw new Error(error.message)
+
+        }
+
+    }
+
 }
