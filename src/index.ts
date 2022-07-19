@@ -10,6 +10,18 @@ import { EspecialidadeDatabase } from "./data/EspecialidadeDatabase"
 
 // ESTUDANTE
 
+app.get('/estudante', async (req: Request, res: Response)=>{
+    try {
+
+        
+        
+    } catch (error:any) {
+
+        res.status(400).send(error.sqlMessage || error.message)
+        
+    }
+})
+
 // ESTUDANTE
 
 
