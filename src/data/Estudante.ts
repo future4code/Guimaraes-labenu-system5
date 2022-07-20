@@ -3,19 +3,19 @@ import {Usuario} from './Usuario'
 
 export class Estudante extends Usuario{
 
-     hobbier: string
+    hobbier: string
 
     constructor(
-        id: number,
-        name: string,
+        id: string,
+        nome: string,
         email: string,
         data_nasc: string,
-        turma_id: number,
+        turma_id: string,
         hobbier: string
 
         )
         {
-            super( id, name, email, data_nasc, turma_id)
+            super( id, nome, email, data_nasc, turma_id)
             this.hobbier = hobbier
 
         }
