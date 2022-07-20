@@ -1,33 +1,33 @@
 
 export class Usuario{
 
-    private id: number;
-    private name: string;
+    private id: string;
+    private nome: string;
     private email: string;
     private data_nasc: string;
-    private turma_id: number
+    private turma_id: string
 
     constructor(
-        id: number,
-        name: string,
+        id: string,
+        nome: string,
         email: string,
         data_nasc: string,
-        turma_id: number
+        turma_id: string
     )
     {
         this.id = id
-        this.name = name
+        this.nome = nome
         this.email = email
         this.data_nasc = data_nasc
         this.turma_id = turma_id
     }
 
-    public getId (): number{
+    public getId (): string{
         return this.id
     }
 
-    public getName () : string{
-        return this.name
+    public getNome () : string{
+        return this.nome
     }
 
     public getEmail (): string{
@@ -38,7 +38,7 @@ export class Usuario{
         return this.data_nasc
     }
 
-    public getTurma_id (): number{
+    public getTurma_id (): string{
         return this.turma_id
     }
 
