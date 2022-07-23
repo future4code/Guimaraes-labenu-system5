@@ -3,6 +3,8 @@ import { v4 as generateId } from 'uuid'
 import { Request, Response } from 'express'
 import { DocenteDataBase } from "./data/DocenteDatabase"
 import { Docente } from "./data/Docente"
+import { getAllEstudantes } from "./enponits/getAllEstudante"
+import {creatEstudante} from "./enponits/creatEstudante"
 
 // TURMA
 
@@ -13,19 +15,10 @@ import { Docente } from "./data/Docente"
 
 // ESTUDANTE
 
-app.get('/estudante', async (req: Request, res: Response)=>{
-    try {
-
-        
-        
-    } catch (error:any) {
-
-        res.status(400).send(error.sqlMessage || error.message)
-        
-    }
-})
+app.get('/estudante', getAllEstudantes)
 
 // ESTUDANTE
+app.post('/estudante', creatEstudante)
 
 
 

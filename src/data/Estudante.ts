@@ -3,25 +3,24 @@ import {Usuario} from './Usuario'
 
 export class Estudante extends Usuario{
 
-    hobbier: string
-
-    constructor(
+      constructor(
+        protected  hobby: string [],
         id: string,
         nome: string,
         email: string,
         data_nasc: string,
         turma_id: string,
-        hobbier: string
+       
 
         )
         {
-            super( id, nome, email, data_nasc, turma_id)
-            this.hobbier = hobbier
+         super( id, nome, email, data_nasc, turma_id)
+           
 
         }
 
-        public getHobbier(): string{
-            return this.hobbier
+        public getHobby(): string []{
+            return this.hobby
         }
 
 
