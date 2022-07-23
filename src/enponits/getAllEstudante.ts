@@ -8,7 +8,7 @@ export const getAllEstudantes =async (req: Request, res: Response): Promise <voi
     try {
 
         const estudanteDB =new EstudanteDataBase
-        await estudanteDB.getEstudante()
+        const result = await estudanteDB.getEstudante()
 
         if(!estudanteDB){
             res.statusCode= 400
@@ -16,7 +16,7 @@ export const getAllEstudantes =async (req: Request, res: Response): Promise <voi
 
         }
 
-       res.status(200).send(estudanteDB)
+       res.status(200).send(result)
         
     } catch (error:any) {
         res.status(500).send(error.sqlMessage || error.message)

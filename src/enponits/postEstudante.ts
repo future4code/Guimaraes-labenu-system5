@@ -1,11 +1,10 @@
 import { Request, Response } from "express";
 import { Estudante } from "../data/Estudante";
 import { EstudanteDataBase } from "../data/EstudanteDataBase";
-import {Usuario} from "../types"
 import { v4 as generateId } from 'uuid'
 
 
-export const creatEstudante =async (req: Request, res: Response): Promise <void> =>{
+export const postEstudante = async (req: Request, res: Response): Promise <void> =>{
 
 
     try {
@@ -63,18 +62,21 @@ export const creatEstudante =async (req: Request, res: Response): Promise <void>
             throw new Error('Data no formato inválido, deve ser dd/mm/yyyy')
         }
 
+        const new_data_nasc = `${data_nasc.slice(-4)}-${data_nasc.slice(3, -5)}-${data_nasc.slice(0, -8)}`
+
         
-//     
         const estudantenew = new Estudante(
             hobby_id as string[],
             generateId(),
             nome,
             email,
-            data_nasc,
+            new_data_nasc,
             turma_id,
             
-        )
+            )
 
+        await estudanteDB.creatEstudante(estudantenew)
+           
 
 
         res.status(201).send('Estudante criado com sucesso')
