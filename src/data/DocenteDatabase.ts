@@ -8,7 +8,6 @@ dotenv.config()
 export class DocenteDataBase extends BaseDatabase {
 
     public getDocentes = async () => {
-
         try {
             const result = await this.connection('LabenuSystem_Docente')
             .select('*')
@@ -19,11 +18,9 @@ export class DocenteDataBase extends BaseDatabase {
         catch (error: any) {
             throw new Error(error.message)
         }
-
     }
 
     public getEspecialidades = async () => {
-
         try {
             const result = await this.connection('LabenuSystem_Especialidade')
             .select('*')
@@ -34,11 +31,9 @@ export class DocenteDataBase extends BaseDatabase {
         catch (error: any) {
             throw new Error(error.message)
         }
-
     }
 
     public postDocente = async (docente: Docente) => {
-
         try {
             await this.connection('LabenuSystem_Docente')
             .insert({
@@ -53,11 +48,9 @@ export class DocenteDataBase extends BaseDatabase {
         catch (error: any) {
             throw new Error(error.sqlMessage || error.message)
         }
-
     }
 
     public postDocente_Especialidade = async (docente: Docente) => {
-
         try {
             docente.getEspecialidade().map(async especialidadeId => {
                 await this.connection('LabenuSystem_Docente_Especialidade')
@@ -73,6 +66,20 @@ export class DocenteDataBase extends BaseDatabase {
             throw new Error(error.sqlMessage || error.message)
         }
 
+    }
+
+    public putDocente = async (id: string, turma: string) => {
+        try {
+            await this.connection('LabenuSystem_Docente')
+            .where('id', id)
+            .update({
+                turma_id: turma
+            })
+        }
+
+        catch (error: any) {
+            throw new Error(error.sqlMessage || error.message)
+        }
     }
 
 }

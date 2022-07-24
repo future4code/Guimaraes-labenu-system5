@@ -8,7 +8,7 @@ dotenv.config()
 
 export class EstudanteDataBase extends BaseDatabase{
 
-    public getEstudante =async () =>{
+    public getEstudante = async () =>{
 
         try {
 
@@ -92,6 +92,20 @@ export class EstudanteDataBase extends BaseDatabase{
             throw new Error(error.sqlMessage || error.message)
         }
 
+    }
+
+    public putEstudante = async (id: string, turma: string) => {
+        try {
+            await this.connection('LabenuSystem_Estudante')
+            .where('id', '=', id)
+            .update({
+                turma_id: turma
+            })
+        }
+
+        catch (error: any) {
+            throw new Error(error.sqlMessage || error.message)
+        }
     }
 }
 
