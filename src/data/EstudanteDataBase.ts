@@ -59,7 +59,7 @@ export class EstudanteDataBase extends BaseDatabase{
 
     }
 
-    public creatEstudante_Hobby = async (estudante: Estudante) => {
+    public postEstudante_Hobby = async (estudante: Estudante) => {
 
         try {
             estudante.getHobby().map(async hobbyId => {
@@ -76,6 +76,22 @@ export class EstudanteDataBase extends BaseDatabase{
             throw new Error(error.sqlMessage || error.message)
         }
 
-}}
+    }
 
+    public postHobby = async (string: string) => {
+
+        try {
+            await this.connection('LabenuSystem_Hobby')
+            .insert({
+                id: generateId(),
+                nome: string,
+            })
+        }
+
+        catch (error: any) {
+            throw new Error(error.sqlMessage || error.message)
+        }
+
+    }
+}
 
