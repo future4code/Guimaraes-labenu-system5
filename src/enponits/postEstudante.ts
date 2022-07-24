@@ -73,10 +73,10 @@ export const postEstudante = async (req: Request, res: Response): Promise <void>
             new_data_nasc,
             turma_id,
             
-            )
+        )
 
         await estudanteDB.creatEstudante(estudantenew)
-           
+        await estudanteDB.postEstudante_Hobby(estudantenew)
 
 
         res.status(201).send('Estudante criado com sucesso')
