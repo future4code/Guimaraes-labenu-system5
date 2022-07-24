@@ -1,36 +1,35 @@
 import app from "./app"
 import { Request, Response } from 'express'
 import { EspecialidadeDatabase } from "./data/EspecialidadeDatabase"
+import { postTurma } from "./enponits/postTurma";
+import { getAllTurma } from "./enponits/getAllTurma";
+import { putTurma } from "./enponits/putTurma";
 
 // TURMA
 
+//Pega todas as turmas
+app.get("/turmas", getAllTurma);
+
+//Create turmas:
+app.post("/turmas", postTurma);
+
+//Update turmas:
+app.put("/turmas", putTurma);
+
 // TURMA
 
 
+// Estudante
+app.get('/estudantes', getAllEstudantes)
+app.post('/estudantes', postEstudante)
 
-// ESTUDANTE
+app.get('/hobby', getAllHobby)
+app.post('/hobby', postHobby)
+// Estudante
 
-// ESTUDANTE
 
 
-
-// DOCENTE
-app.get('/especialidades', async (req: Request, res: Response) => {
-
-    try {
-
-        const especialidadeDB = new EspecialidadeDatabase()
-        const result = await especialidadeDB.getAll()
-
-        res.status(200).send(result)
-
-    }
-
-    catch (error: any) {
-
-        res.status(400).send(error.sqlMessage || error.message)
-
-    }
-
-})
-// DOCENTE
+// Docente
+app.get('/docentes', getAllDocente)
+app.post('/docentes', postDocente)
+// Docente
