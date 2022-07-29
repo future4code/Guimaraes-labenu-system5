@@ -1,0 +1,18 @@
+GET http://localhost:3003/especialidades
+###
+
+GET http://localhost:3003/estudante
+###
+
+POST http://localhost:3003/estudante
+Content-Type: application/json
+
+{
+    "hobby_id": "4587",
+    "nome": "chuchu",
+    "email": "chuchu@gmail.com",
+    "data_nasc": "02/02/2000",
+    "turma_id": "12345",
+    
+
+}
